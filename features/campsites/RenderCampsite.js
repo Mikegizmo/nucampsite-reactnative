@@ -12,9 +12,9 @@ const RenderCampsite = ({ campsite }) => {
                 color: 'white',
                 textAlign: 'center',
                 fontSize: 20,
-                // textShadowColor: 'black',
-                // textShadowOffset: {width: 1, height: 1},
-                // textShadowRadius: 2
+                textShadowColor: 'black',
+                textShadowOffset: {width: 1, height: 1},
+                textShadowRadius: 2
               }}
             >
               {campsite.name}
