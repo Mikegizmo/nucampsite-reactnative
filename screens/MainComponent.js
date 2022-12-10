@@ -1,10 +1,10 @@
 import { Platform, View } from 'react-native';
 import Constants from "expo-constants";
-import CampsiteInfoScreen from "./CampsiteInfoScreen";
-import DirectoryScreen from './DirectoryScreen';
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import HomeScreen from "./HomeScreen";
+import DirectoryScreen from './DirectoryScreen';
+import CampsiteInfoScreen from "./CampsiteInfoScreen";
 import AboutScreen from "./AboutScreen";
 import ContactScreen from "./ContactScreen";
 

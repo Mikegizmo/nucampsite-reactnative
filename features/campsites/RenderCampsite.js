@@ -15,8 +15,8 @@ const RenderCampsite = ({ campsite }) => {
             <View 
               style={{
                 borderRadius: 10,
-                width: '75%',
-                padding: 3,
+                paddingHorizontal: 12,
+                paddingVertical: 3,
                 backgroundColor: 'rgba(169, 169, 169, 0.6)'
               }}
             >

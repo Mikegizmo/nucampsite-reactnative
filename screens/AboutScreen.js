@@ -1,4 +1,4 @@
-import { Text, View, ScrollView } from 'react-native';
+import { Text, ScrollView } from 'react-native';
 import { Avatar, Card, ListItem } from 'react-native-elements';
 import { useState } from "react";
 import { PARTNERS } from '../shared/partners';
@@ -26,15 +26,13 @@ const AboutScreen = () => {
         <Card.Divider />
         { partners.map(partner => {
             return (
-              
-                <ListItem key={partner.id}>
-                  <Avatar source={partner.image} square size='large'></Avatar>
-                  <ListItem.Content>
-                    <ListItem.Title>{partner.name}</ListItem.Title>
-                    <ListItem.Subtitle>{partner.description}</ListItem.Subtitle>
-                  </ListItem.Content>
-                </ListItem>
-              
+              <ListItem key={partner.id}>
+                <Avatar source={partner.image} square size='large'></Avatar>
+                <ListItem.Content>
+                  <ListItem.Title>{partner.name}</ListItem.Title>
+                  <ListItem.Subtitle>{partner.description}</ListItem.Subtitle>
+                </ListItem.Content>
+              </ListItem>
             )
         })}
       </Card>
