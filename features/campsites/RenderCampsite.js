@@ -18,7 +18,8 @@ const RenderCampsite = ({ campsite }) => {
                 width: '75%',
                 padding: 3,
                 backgroundColor: 'rgba(169, 169, 169, 0.6)'
-              }}>
+              }}
+            >
               <Text
                 style={{
                   color: 'white',

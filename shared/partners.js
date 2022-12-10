@@ -2,7 +2,7 @@ export const PARTNERS = [
     {
         id: 0,
         name: 'Bootstrap Outfitters',
-        image: require("../assets/images/bootstrap-logo.png"),
+        image: require("../assets/images/bootstrap-logo2.png"),
         featured: false,
         description:
             "Bootstrap Outfitters supplies you with the gear you need at prices you can't beat.",
@@ -10,7 +10,7 @@ export const PARTNERS = [
     {
         id: 1,
         name: 'Git Out Expeditions',
-        image: require("../assets/images/git-logo.png"),
+        image: require("../assets/images/git-logo2.png"),
         featured: false,
         description:
             'Join Git Out Expeditions to explore new horizons with a group of other adventurers!',
@@ -26,7 +26,7 @@ export const PARTNERS = [
     {
         id: 3,
         name: 'Node Outdoor Apparel',
-        image: require("../assets/images/node-logo.png"),
+        image: require("../assets/images/node-logo2.png"),
         featured: true,
         description:
             'From polar fleeces to swimsuits, hiking boots to waders, a visit to Node will be sure to get you covered.',
