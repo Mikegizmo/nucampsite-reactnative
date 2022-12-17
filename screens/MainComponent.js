@@ -182,8 +182,10 @@ const Main = () => {
     >
       <Drawer.Navigator
         initialRouteName='Home'
-        drawerStyle={{ backgroundColor: '#CEC8FF'}}
         drawerContent={CustomDrawerContent}
+        screenOptions={{
+          drawerStyle: { backgroundColor: '#CEC8FF'}
+        }}
       >
         <Drawer.Screen 
           name='Home'

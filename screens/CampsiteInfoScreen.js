@@ -1,6 +1,6 @@
 import { FlatList, StyleSheet, Text, View, Button, Modal } from "react-native";
 import { useState } from "react";
-import { Rating, Input } from "react-native-elements";
+import { Rating, Input, Card} from "react-native-elements";
 import { useSelector, useDispatch } from "react-redux";
 import RenderCampsite from '../features/campsites/RenderCampsite';
 import { toggleFavorite } from "../features/favorites/favoritesSlice";
@@ -23,6 +23,7 @@ const CampsiteInfoScreen = ({ route }) => {
       text,
       campsiteId: campsite.id
     };
+    console.log(newComment);
     dispatch(postComment(newComment));
     setShowModal(!showModal);
   };
@@ -41,7 +42,7 @@ const CampsiteInfoScreen = ({ route }) => {
         <Text style={{ fontSize: 14 }}>{item.text}</Text>
         <Rating 
           readonly
-          startingValue={rating}
+          startingValue={item.rating}
           imageSize={10}
           style={{ alignItems: 'flex-start', paddingVertical: '5%'}}
         />
@@ -54,22 +55,28 @@ const CampsiteInfoScreen = ({ route }) => {
 
   return (
     <>
+      <RenderCampsite 
+              campsite={campsite}
+              isFavorite={favorites.includes(campsite.id)} 
+              markFavorite = {() => dispatch(toggleFavorite(campsite.id))}
+              onShowModal={() => setShowModal(!showModal)}
+      />
+      
       <FlatList
         data={comments.commentsArray.filter(
           (comment) => comment.campsiteId === campsite.id
         )}
         renderItem={renderCommentItem}
         keyExtractor={(item) => item.id.toString()}
-        contentContainerStyle={{ marginHorizontal: 20, paddingVertical: 20 }}
+        contentContainerStyle={{ 
+          marginHorizontal: 20, 
+          paddingVertical: 20 
+        }}
         ListHeaderComponent={
           <>
-            <RenderCampsite 
-              campsite={campsite}
-              isFavorite={favorites.includes(campsite.id)} 
-              markFavorite = {() => dispatch(toggleFavorite(campsite.id))}
-              onShowModal={() => setShowModal(!showModal)}
-            />
-            <Text style={styles.commentsTitle}></Text>
+          <View style={styles.contentWrapper}>
+            <Text style={styles.commentsTitle}>Comments</Text>
+          </View>  
           </> 
         }
       />
@@ -84,7 +91,7 @@ const CampsiteInfoScreen = ({ route }) => {
             showRating
             startingValue={rating}
             imageSize={40}
-            onFinishRating={(rating)=> setRating(rating)}
+            onFinishRating={(newRating)=> setRating(newRating)}
             style={{paddingVertical: 10}}
           />
           <Input
@@ -134,7 +141,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#43484D',
-    padding: 10,
+    padding: 15,
     paddingTop: 30
   },
   commentItem: {
@@ -145,6 +152,10 @@ const styles = StyleSheet.create({
   modal: {
     justifyContent: 'center',
     margin: 20
+  },
+  contentWrapper: {
+    borderBottomColor: 'lightgray',
+    borderBottomWidth: 1
   }
 });
 

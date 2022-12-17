@@ -23,7 +23,17 @@ const DirectoryScreen = ({ navigation }) => {
     return (
       <Tile 
         title={campsite.name}
+        titleStyle={{ 
+          textShadowColor: '#000',
+          textShadowOffset: { width: -1, height: -1 },
+          textShadowRadius: 10 
+          }}
         caption={campsite.description}
+        captionStyle={{
+          textShadowColor: '#000',
+          textShadowOffset: { width: -1, height: -1 },
+          textShadowRadius: 10
+          }}
         featured
         onPress={() => 
           navigation.navigate('CampsiteInfo', {campsite})

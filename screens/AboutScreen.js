@@ -22,12 +22,12 @@ const AboutScreen = () => {
   if (partners.isLoading) {
     return (
       <ScrollView>
-          <Mission />
-          <Card>
-              <Card.Title>Community Partners</Card.Title>
-              <Card.Divider />
-              <Loading />
-          </Card>
+        <Mission />
+        <Card>
+          <Card.Title>Community Partners</Card.Title>
+          <Card.Divider />
+          <Loading />
+        </Card>
       </ScrollView>
     );
   }  
@@ -35,12 +35,12 @@ const AboutScreen = () => {
   if (partners.errMess) {
     return (
       <ScrollView>
-          <Mission />
-          <Card>
-              <Card.Title>Community Partners</Card.Title>
-              <Card.Divider />
-              <Text>{partners.errMess}</Text>
-          </Card>
+        <Mission />
+        <Card>
+          <Card.Title>Community Partners</Card.Title>
+          <Card.Divider />
+          <Text>{partners.errMess}</Text>
+        </Card>
       </ScrollView>
     );
   } 
