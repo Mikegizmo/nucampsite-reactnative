@@ -91,7 +91,7 @@ const CampsiteInfoScreen = ({ route }) => {
             showRating
             startingValue={rating}
             imageSize={40}
-            onFinishRating={(newRating)=> setRating(newRating)}
+            onFinishRating={(rating)=> setRating(rating)}
             style={{paddingVertical: 10}}
           />
           <Input
