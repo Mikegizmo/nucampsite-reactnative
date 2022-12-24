@@ -60,13 +60,6 @@ const CampsiteInfoScreen = ({ route }) => {
       duration={2000}
       delay={1000}
     >
-      <RenderCampsite 
-              campsite={campsite}
-              isFavorite={favorites.includes(campsite.id)} 
-              markFavorite = {() => dispatch(toggleFavorite(campsite.id))}
-              onShowModal={() => setShowModal(!showModal)}
-      />
-      
       <FlatList
         data={comments.commentsArray.filter(
           (comment) => comment.campsiteId === campsite.id
@@ -79,12 +72,19 @@ const CampsiteInfoScreen = ({ route }) => {
         }}
         ListHeaderComponent={
           <>
-          <View style={styles.contentWrapper}>
-            <Text style={styles.commentsTitle}>Comments</Text>
-          </View>  
+            <RenderCampsite 
+              campsite={campsite}
+              isFavorite={favorites.includes(campsite.id)} 
+              markFavorite = {() => dispatch(toggleFavorite(campsite.id))}
+              onShowModal={() => setShowModal(!showModal)}
+            />
+            <Card style={styles.contentWrapper}>
+              <Text style={styles.commentsTitle}>Comments</Text>
+            </Card>
           </> 
         }
       />
+      
       <Modal
         animationType='slide'
         transparent={false}
@@ -146,13 +146,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#43484D',
-    padding: 15,
-    paddingTop: 30
+    paddingBottom: 30,
+    paddingTop: 30,
+    borderBottomColor: 'lightgray',
+    borderBottomWidth: 1
   },
   commentItem: {
     paddingVertical: 10,
     paddingHorizontal: 20,
-    backgroundColor: '#fff'
+    backgroundColor: '#fff',
+    width: '94%',
+    alignSelf: 'center'
   },
   modal: {
     justifyContent: 'center',
