@@ -34,7 +34,8 @@
     "redux": "4.2.0",
     "redux-persist": "^6.0.0",
     "expo-secure-store": "~11.3.0",
-    "expo-notifications": "~0.16.1"
+    "expo-notifications": "~0.16.1",
+    "expo-mail-composer": "~11.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
