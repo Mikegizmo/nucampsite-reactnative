@@ -6,6 +6,10 @@ import * as ImagePicker from 'expo-image-picker';
 import { baseUrl } from '../shared/baseUrl';
 import logo from '../assets/images/logo.png';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import * as ImageManipulator from 'expo-image-manipulator';
+import { SaveFormat } from 'expo-image-manipulator';
+import * as MediaLibrary from 'expo-media-library';
+import * as FileSystem from 'expo-file-system';
 
 const LoginTab = ({ navigation }) => {
   const [ username, setUsername ] = useState('');
@@ -149,7 +153,37 @@ const RegisterTab = () => {
       });
       if (!capturedImage.cancelled) {
         console.log(capturedImage);
-        setImageUrl(capturedImage.uri);
+        processImage(capturedImage.uri);
+      }
+    }
+  }
+
+  const processImage = async (imgUri) => {
+    const processedImage = await ImageManipulator.manipulateAsync(
+      imgUri,
+      [ { crop: { 
+        originX:0,
+        originY: 0,
+        width: 400,
+        height: 400 }}], 
+      { format: SaveFormat.PNG }
+    );
+    console.log(processedImage);
+    setImageUrl(processedImage.uri);
+    // const localuri = await FileSystem.downloadAsync(processedImage.uri, processedImage);
+    // const asset = await MediaLibrary.createAssetAsync(localuri.toString());
+  }
+
+  const getImageFromGallery = async () => {
+    const mediaLibraryPermissions = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (mediaLibraryPermissions.status==='granted') {
+      const capturedImage = await ImagePicker.launchImageLibraryAsync({
+        allowsEditing: true,
+        aspect: [1, 1]
+      });
+      if (!capturedImage.cancelled) {
+        console.log(capturedImage);
+        processImage(capturedImage.uri);
       }
     }
   }
@@ -166,6 +200,10 @@ const RegisterTab = () => {
           <Button 
             title='Camera'
             onPress={getImageFromCamera}
+          />
+          <Button 
+            title='Gallery'
+            onPress={getImageFromGallery}
           />
         </View>
         <Input 
