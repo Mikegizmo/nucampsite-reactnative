@@ -240,9 +240,9 @@ const Main = () => {
   //           ToastAndroid.LONG
   //       );
   //   });
-  useEffect(() => {setNetInfo()});
+  useEffect(() => {showNetInfo()});
     
-  const setNetInfo = async () => {
+  const showNetInfo = async () => {
     const connectionInfo = await NetInfo.fetch();
       Platform.OS==='ios' 
         ? Alert.alert(

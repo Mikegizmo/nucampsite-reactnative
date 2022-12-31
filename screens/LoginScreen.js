@@ -7,9 +7,7 @@ import { baseUrl } from '../shared/baseUrl';
 import logo from '../assets/images/logo.png';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as ImageManipulator from 'expo-image-manipulator';
-import { SaveFormat } from 'expo-image-manipulator';
 import * as MediaLibrary from 'expo-media-library';
-import * as FileSystem from 'expo-file-system';
 
 const LoginTab = ({ navigation }) => {
   const [ username, setUsername ] = useState('');
@@ -161,17 +159,12 @@ const RegisterTab = () => {
   const processImage = async (imgUri) => {
     const processedImage = await ImageManipulator.manipulateAsync(
       imgUri,
-      [ { crop: { 
-        originX:0,
-        originY: 0,
-        width: 400,
-        height: 400 }}], 
-      { format: SaveFormat.PNG }
+      [ { resize: { width: 400 } }], 
+      { format: ImageManipulator.SaveFormat.PNG }
     );
     console.log(processedImage);
+    MediaLibrary.saveToLibraryAsync(processedImage.uri);
     setImageUrl(processedImage.uri);
-    // const localuri = await FileSystem.downloadAsync(processedImage.uri, processedImage);
-    // const asset = await MediaLibrary.createAssetAsync(localuri.toString());
   }
 
   const getImageFromGallery = async () => {
